@@ -10,18 +10,18 @@
 	    if ((host == window.location.host) && (window.location.protocol != "https:"))
 	        window.location.protocol = "https";
 	</script>
-    
+
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css" />
     <script src="js/modernizr.custom.js"></script>
 	<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" />
 
 
-    
+
 </head>
 <body>
 <div class = "bodyDiv">
-    
+
     <div class="md-modal md-effect-13" id="modal-13">
 			<div class="md-content">
 				<div>
@@ -29,24 +29,24 @@
                     <button class="md-close">
                        <i class="md-close fa fa-times-circle-o"></i>
                     </button>
-                    
+
 				</div>
 			</div>
     </div>
-    
-    
+
+
         <form name="loginForm" id="login" action="#" onsubmit="return errWrap(login,this);">
             <span class="input input--nao">
                 <input class="input__field input__field--nao" type="text" name="username" id="username" placeholder="Enter A Username"/>
                         <label class="input__label input__label--nao" for="username">
-                            <span class="input__label-content input__label-content--nao">                                          
+                            <span class="input__label-content input__label-content--nao">
                             </span>
                         </label>
                     <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
                         <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
                     </svg>
             </span>
-            
+
                <button class="cbutton cbutton--effect-radomir" type="submit" name="login_submit" value="Log In" style="margin-top: 40px; margin-left:-10px">
 						<i class="cbutton__icon fa fa-fw fa fa-sign-in"></i>
 				</button>
@@ -56,19 +56,19 @@
         <span class="input input--nao">
             <input class="input__field input__field--nao" type="text" name="number" id="call" placeholder="Enter User To Call!"/>
 					<label class="input__label input__label--nao" for="number">
-						<span class="input__label-content input__label-content--nao">                                          
+						<span class="input__label-content input__label-content--nao">
                         </span>
 					</label>
 				<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
 				    <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 				</svg>
         </span>
-        
+
         <button class="cbutton cbutton--effect-radomir md-trigger" type="submit" value="Call" style="margin-top: 40px; margin-left:-10px" data-modal="modal-13">
             <i class="cbutton__icon fa fa-fw fa fa fa-phone-square"></i>
         </button>
 
-        
+
 	</form>
     <button class="cbutton cbutton--effect-radomir md-trigger" value="Call" hidden="true" data-modal="modal-13" id="showModal"></button>
 	<div class="ptext">
@@ -77,7 +77,7 @@
         <p>In a separate browser window, log in with a different username, and place a call to the first.</p>
     </div>
 
-     
+
 </div>
 </body>
 
@@ -91,9 +91,9 @@ var video_out = document.getElementById("vid-box");
 function login(form) {
 	var phone = window.phone = PHONE({
 	    number        : form.username.value || "Anonymous", // listen on username line else Anonymous
-	    publish_key   : 'pub-c-561a7378-fa06-4c50-a331-5c0056d0163c', // Your Pub Key
-	    subscribe_key : 'sub-c-17b7db8a-3915-11e4-9868-02ee2ddab7fe', // Your Sub Key
-	});	
+	    publish_key   : 'pub-c-4da401d9-afda-477e-a7d0-3df0c71c664f', // Your Pub Key
+	    subscribe_key : 'sub-c-fddd2ed4-a8b3-11e6-aa9e-0619f8945a4f', // Your Sub Key
+	});
 	phone.ready(function(){form.username.style.background="#55ff5b"; form.login_submit.hidden="true"; });
 	phone.receive(function(session){
 	    session.connected(function(session) { video_out.appendChild(session.video); showModal();});
@@ -101,13 +101,13 @@ function login(form) {
 	});
 	return false;
 }
-    
+
 function makeCall(form){
 	if (!window.phone) alert("Login First!");
 	else phone.dial(form.number.value);
 	return false;
 }
-    
+
 function showModal(){
     $("#showModal").click();
 }
